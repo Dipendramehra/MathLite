@@ -13,8 +13,14 @@ class MathView @JvmOverloads constructor(
     private var pageLoaded = false
     private var pendingLatex: String? = null
 
+    // NEW: scroll control flag
+    private var isScrollable: Boolean = true
+
     init {
         settings.javaScriptEnabled = true
+        settings.allowFileAccess = true
+        settings.domStorageEnabled = true
+
         setBackgroundColor(0x00000000)
 
         webViewClient = object : WebViewClient() {
@@ -30,6 +36,7 @@ class MathView @JvmOverloads constructor(
         loadUrl("file:///android_asset/template.html")
     }
 
+    // PUBLIC API
     fun setLatex(latex: String) {
         if (pageLoaded) {
             renderLatex(latex)
@@ -38,12 +45,19 @@ class MathView @JvmOverloads constructor(
         }
     }
 
+    // NEW: user can control scroll behavior
+    fun setScrollable(scrollable: Boolean) {
+        isScrollable = scrollable
+    }
+
     private fun renderLatex(latex: String) {
         val escaped = latex
             .replace("\\", "\\\\")
             .replace("'", "\\'")
             .replace("\n", "\\n")
 
-        evaluateJavascript("renderMath('$escaped');", null)
+        val scrollFlag = if (isScrollable) "true" else "false"
+
+        evaluateJavascript("renderMath('$escaped', $scrollFlag);", null)
     }
 }
