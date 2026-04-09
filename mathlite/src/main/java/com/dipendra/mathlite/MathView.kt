@@ -27,7 +27,7 @@ class MathView @JvmOverloads constructor(
             }
         }
 
-        loadUrl("file:///android_asset/template.html")
+        loadUrl("file:///android_assets/template.html")
     }
 
     fun setLatex(latex: String) {
