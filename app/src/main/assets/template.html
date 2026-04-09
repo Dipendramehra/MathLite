@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="katex.min.css">
+    <script defer src="katex.min.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 8px;
+            background: transparent;
+            font-size: 18px;
+        }
+
+        #math {
+            width: 100%;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+
+<div id="math"></div>
+
+<script>
+    function renderMath(latex) {
+        function tryRender() {
+            if (typeof katex !== "undefined") {
+                try {
+                    katex.render(latex, document.getElementById("math"), {
+                        throwOnError: false
+                    });
+                } catch (e) {
+                    document.getElementById("math").innerText = latex;
+                }
+            } else {
+                setTimeout(tryRender, 100);
+            }
+        }
+
+        tryRender();
+    }
+</script>
+
+</body>
+</html>
