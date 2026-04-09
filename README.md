@@ -104,6 +104,15 @@ Simply type the name of the symbol preceded by a double backslash.
 | **Summations** | `"\\sum_{k=1}^{n} k^2"` |
 | **Matrices** | `"\\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}"` |
 
+
+<p align="center">
+  <img src="./images/IMG-20260409-WA0000.jpg" alt="Screenshot 1" width="200"/>
+  <img src="./images/IMG-20260409-WA0001.jpg" alt="Screenshot 2" width="200"/>
+  <img src="./images/IMG-20260409-WA0002.jpg" alt="Screenshot 3" width="200"/>
+  <img src="./images/IMG-20260409-WA0003.jpg" alt="Screenshot 4" width="200"/>
+</p>
+
+
 ## 📐 Geometry & Diagram Rendering
 
 MathLite isn't just for equations; it includes a built-in `DiagramView` to render clean, offline geometric shapes. By simply passing a JSON configuration, the library will automatically draw the shape and label its vertices!
