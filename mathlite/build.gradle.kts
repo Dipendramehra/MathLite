@@ -24,16 +24,24 @@ android {
             )
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = "1.8"
     }
 
-    // 2. Tell Android Gradle Plugin to prepare the release build for publishing
-    // (This was a great addition by you!)
+    // ✅ VERY IMPORTANT (Fix for your issue)
+    sourceSets {
+        getByName("main") {
+            assets.srcDirs("src/main/assets")
+        }
+    }
+
+    // ✅ Publishing config (already good)
     publishing {
         singleVariant("release") {
             withSourcesJar()
